@@ -8,7 +8,17 @@ $(function () {
   // useful when saving the description in local storage?
   $('.saveBtn').on('click', function() {
     var currentHourPlan = $(this).siblings('textarea').val()
-    console.log(currentHourPlan)
+    var currentHour = $(this).parent().attr('id').match(/\d+/)[0]
+    let schedule = localStorage.getItem('schedule')
+    if (!schedule) {
+      let scheduleObj = {}
+      scheduleObj[currentHour] = currentHourPlan
+      localStorage.setItem('schedule', JSON.stringify(scheduleObj))
+    } else {
+      var scheduleObj = JSON.parse(localStorage.getItem('schedule'))
+      scheduleObj[currentHour] = currentHourPlan
+      localStorage.setItem('schedule', JSON.stringify(scheduleObj))
+    }
   })
 
   var hourBlocks = $('.time-block')
@@ -28,7 +38,16 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-
+  var scheduleObj = JSON.parse(localStorage.getItem('schedule')) ? JSON.parse(localStorage.getItem('schedule')) : {}
+  var scheduleObjKeys = Object.keys(scheduleObj)
+  let allTextAreas = $('textarea')
+  $.each(allTextAreas, function (j, textArea) {
+    let thisHour = String($(this).parent().attr('id').match(/\d+/)[0])
+    console.log(textArea)
+    if (scheduleObjKeys.includes(thisHour)) {
+      $(this).text(scheduleObj[thisHour])
+    }
+  })
 
   // TODO: Add code to display the current date in the header of the page.
   let getOrdinalEnding = function() {
