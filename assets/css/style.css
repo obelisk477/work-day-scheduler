@@ -12,6 +12,16 @@ textarea {
   padding: 10px;
 }
 
+.past textarea::placeholder {
+  color:#a8a8a8
+}
+.present textarea::placeholder {
+  color:#9e5151
+}
+.future textarea::placeholder {
+  color:#53a14a
+}
+
 .description {
   white-space: pre-wrap;
 }

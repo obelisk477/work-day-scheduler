@@ -15,10 +15,10 @@ $(function () {
     }
   })
 
+
   var hourBlocks = $('.time-block')
-
-
-  $.each(hourBlocks, function(i ,hourBlock) {
+  
+  $.each(hourBlocks, function() {
     let hour = Number($(this).attr("id").match(/\d+/)[0])
     let nowHour = Number(dayjs().format('H'))
     if (hour < nowHour) {
