@@ -3,6 +3,7 @@ body {
   font-size: 16px;
 }
 
+/* All CSS below pertains to the textarea forms*/
 textarea {
   background: transparent;
   border: none;
@@ -10,16 +11,6 @@ textarea {
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
-}
-
-.past textarea::placeholder {
-  color:#a8a8a8
-}
-.present textarea::placeholder {
-  color:#9e5151
-}
-.future textarea::placeholder {
-  color:#53a14a
 }
 
 .description {
@@ -40,21 +31,37 @@ textarea {
   border-top: 1px dashed #000000;
 }
 
+/* Set standard and placeholder styles for PAST events */
 .past {
   background-color: #d3d3d3;
   color: white;
 }
 
+.past textarea::placeholder {
+  color:#a8a8a8
+}
+
+/* Set standard and placeholder styles for PRESENT events */
 .present {
   background-color: #ff6961;
   color: white;
 }
 
+.present textarea::placeholder {
+  color:#9e5151
+}
+
+/* Set standard and placeholder styles for FUTURE events */
 .future {
   background-color: #77dd77;
   color: white;
 }
 
+.future textarea::placeholder {
+  color:#53a14a
+}
+
+/* Remaining CSS pertains to save button styles */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
